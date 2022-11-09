@@ -74,8 +74,10 @@ class AddNovoEvento extends StatelessWidget {
               ButtonTheme(
                 minWidth: 230.0,
                 height: 180.0,
-                child: RaisedButton(
-                  color: Colors.grey[400],
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey[400],
+                  ),
                   onPressed: () {},
                   child: Text(
                     "+",

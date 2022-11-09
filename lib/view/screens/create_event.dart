@@ -9,8 +9,10 @@ import 'package:nuceu/themes/themes.dart';
 import 'package:nuceu/view/widgets/colored_button.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart' as Path;
-
+import 'package:nuceu/notificationservice.dart';
 import '../widgets/navigation_drawer.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
 
 class CreateEvent extends StatefulWidget {
   final bool isEdit;
@@ -35,6 +37,12 @@ class CreateEvent extends StatefulWidget {
 }
 
 class _CreateEventState extends State<CreateEvent> {
+  @override
+  void  initState(){
+    super.initState();
+
+    tz.initializeTimeZones();
+  }
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
   UploadTask? task;
@@ -223,6 +231,7 @@ class _CreateEventState extends State<CreateEvent> {
                           duration: const Duration(seconds: 2),
                         ));
                       }
+                       NotificationService().showNotification(1, "Novo evento disponível!", titleController.text, 1);
                     },
                   ),
                 ],

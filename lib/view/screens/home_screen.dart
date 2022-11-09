@@ -12,6 +12,8 @@ import 'package:nuceu/themes/themes.dart';
 import 'package:nuceu/view/widgets/home_screen_widgets/home_bottom_card.dart';
 import 'package:intl/intl.dart';
 import 'package:nuceu/view/widgets/navigation_drawer.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -21,6 +23,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void  initState(){
+    super.initState();
+
+    tz.initializeTimeZones();
+  }
   double slideValue = 5;
   final Timestamp now = Timestamp.fromDate(DateTime.now());
   final bool isLogged =

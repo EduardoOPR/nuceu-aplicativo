@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:nuceu/notificationservice.dart';
 import 'package:nuceu/view/screens/create_account_screen.dart';
 import 'package:nuceu/view/screens/create_event.dart';
 import 'package:nuceu/view/screens/detalhesDoEvento.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  NotificationService().initNotification();
   await Firebase.initializeApp(
     options: const FirebaseOptions(
         apiKey: 'AIzaSyC-6MXlDkcAdZTXwEOQl3HnSzeSaxCym_s',
